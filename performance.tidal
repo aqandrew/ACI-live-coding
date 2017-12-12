@@ -1,0 +1,40 @@
+import qualified Sound.Tidal.Chords as Chords
+
+hush
+
+d1 silence
+d2 silence
+d3 silence
+d4 silence
+d5 silence
+d6 silence
+d7 silence
+
+-- 50
+bps (50 / 60)
+
+-- intro:
+d5 $ stack [
+  -- sound "ade" # n "0" # up "-5" # coarse "2",
+  -- sound "ade" # n "1" # up "-4" # coarse "2",
+  -- sound "ade" # n "3" # up "-2" # coarse "2",
+  sound "fire"
+] # room "1" # size "0.7"
+
+-- percussion
+d4 $ sound "future*8" # up "-2"
+d1 $ fast 1 $ s "bd ~ bd ~ ~ bd ~ ~ bd ~ ~ ~ ~ ~ ~ ~" # gain "2"
+d2 $ fast 1 $ s "hc hc hc hc hc hc hc hc <hc cr> hc hc hc hc hc hc hc"
+d3 $ fast 1 $ s "sd ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ sd ~ ~ ~" # gain "2"
+
+d3 $ fast 4 $ s "superchip" |*| up "-29" # n (choose [0, 2, 4, 7, 9, 11, 12, 14, 16, 19])
+
+-- pluck chord for progression
+d4 $ stack [
+  -- minor chord
+  speed "1" # s "pluck" |*| up "[0,3,7]" |*| up "-3" # gain "2.5" -- |*| up (slow 8 "0 3 2 -2")
+]
+
+-- fx
+d6 $ fast 1 $ sound "super808 sn sn hc bd sn cb crow/2" # gain "1.6" # coarse "4"
+d7 $ s "feelfx" |*| up "-4" # gain "1.8"
